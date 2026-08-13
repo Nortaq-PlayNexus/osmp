@@ -1,0 +1,57 @@
+name: Bug Report
+description: Report a defect in OSMP
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill in as much as you can.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened and what did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Exact commands and configuration used.
+      placeholder: |
+        cp .env.example .env
+        # GITHUB_TOKEN=...
+        npm run pipeline
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of the system is affected?
+      options:
+        - Discovery / scoring
+        - Acquisition / git
+        - Audit / security
+        - Modernization phases
+        - Documentation generation
+        - CLI / config
+        - Project memory
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: Node.js version
+      description: Output of `node --version`
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / error output
+      description: Paste any error output (redact tokens).
+    validations:
+      required: false

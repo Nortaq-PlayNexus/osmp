@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" width="1280" height="320">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1220"/>
+      <stop offset="1" stop-color="#1a1033"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c5cff"/>
+      <stop offset="1" stop-color="#2dd4bf"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 H0 V40" fill="none" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="320" fill="url(#bg)"/>
+  <rect width="1280" height="320" fill="url(#grid)"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M250 160 H1030" stroke="#7c5cff" stroke-width="6" opacity="0.5"/>
+    <path d="M640 60 V260" stroke="#2dd4bf" stroke-width="6" opacity="0.5"/>
+    <path d="M360 100 L920 220" stroke="#7c5cff" stroke-width="4" opacity="0.35"/>
+    <path d="M920 100 L360 220" stroke="#2dd4bf" stroke-width="4" opacity="0.35"/>
+  </g>
+  <circle cx="640" cy="160" r="52" fill="url(#accent)"/>
+  <circle cx="640" cy="160" r="52" stroke="#ffffff" stroke-width="5" fill="none" opacity="0.9"/>
+  <text x="640" y="142" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="58" font-weight="800" fill="#ffffff" text-anchor="middle">O</text>
+  <text x="640" y="186" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20" font-weight="600" fill="#0d1220" text-anchor="middle" letter-spacing="6">S M P</text>
+  <text x="640" y="252" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="2">Open Source Modernization Platform</text>
+  <text x="640" y="286" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#9aa3b8" text-anchor="middle">Autonomous agent-driven modernization for overlooked open-source projects</text>
+</svg>
