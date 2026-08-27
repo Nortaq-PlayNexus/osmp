@@ -69,9 +69,7 @@ export class DiscoveryEngine {
     const scored = await this.enrichAndScore(candidates);
     scored.sort((a, b) => b.score.openSourcePotentialIndex - a.score.openSourcePotentialIndex);
 
-    const selected = scored
-      .filter((s) => s.score.qualified)
-      .slice(0, this.config.maxRepositories);
+    const selected = scored.filter((s) => s.score.qualified).slice(0, this.config.maxRepositories);
 
     for (const s of selected) {
       logger.info("discovery", `SELECT ${s.candidate.fullName} OSPI=${s.score.openSourcePotentialIndex}`);
@@ -169,8 +167,10 @@ export class DiscoveryEngine {
 function isTutorial(c: RepoCandidate): boolean {
   const d = c.description.toLowerCase();
   const topics = c.topics.join(" ").toLowerCase();
-  return /(^|\s)(tutorial|example|sample|demo project|how-to|guide)(\s|$)/.test(d + " " + topics) ||
-    /tutorial|learn to|step-by-step/.test(d);
+  return (
+    /(^|\s)(tutorial|example|sample|demo project|how-to|guide)(\s|$)/.test(d + " " + topics) ||
+    /tutorial|learn to|step-by-step/.test(d)
+  );
 }
 
 function isSpam(c: RepoCandidate): boolean {

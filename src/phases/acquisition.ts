@@ -26,9 +26,7 @@ export class AcquisitionPhase {
     memory.originalBranch = candidate.defaultBranch;
     mkdirSync(this.opts.workspaceRoot, { recursive: true });
 
-    const forkName = this.opts.githubOwner
-      ? `${this.opts.githubOwner}/${candidate.fullName.split("/")[1]}`
-      : "";
+    const forkName = this.opts.githubOwner ? `${this.opts.githubOwner}/${candidate.fullName.split("/")[1]}` : "";
 
     if (!this.opts.dryRun) {
       if (this.opts.githubOwner) {

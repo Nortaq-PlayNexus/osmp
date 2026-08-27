@@ -1,7 +1,7 @@
 # Deployment
 
-OSMP itself is a zero-dependency Node.js CLI application. Deployment is straightforward:
-provision a machine with Node.js, install, configure, and schedule runs.
+OSMP itself is a zero-dependency Node.js CLI application. Deployment is straightforward: provision a machine with
+Node.js, install, configure, and schedule runs.
 
 ## Manual deployment
 
@@ -55,5 +55,5 @@ Run discovery on a schedule with a cron entry (or your platform equivalent):
 
 ## Target platforms
 
-OSMP is platform-agnostic. The same CLI runs on Linux, macOS, and Windows. Containerized
-deployment works on AWS ECS/EKS, Azure Container Apps, Google Cloud Run, and Kubernetes.
+OSMP is platform-agnostic. The same CLI runs on Linux, macOS, and Windows. Containerized deployment works on AWS
+ECS/EKS, Azure Container Apps, Google Cloud Run, and Kubernetes.

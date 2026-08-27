@@ -21,8 +21,7 @@ npm run discover            # with live API enrichment
 npm run discover:dry        # filters + scores without network enrichment
 ```
 
-Output includes the selected repositories with their OSPI, plus the top rejected candidates
-and the reasons.
+Output includes the selected repositories with their OSPI, plus the top rejected candidates and the reasons.
 
 ### `pipeline`
 
@@ -30,9 +29,9 @@ and the reasons.
 npm run pipeline
 ```
 
-Runs discovery, then for every selected repository executes acquisition, audit, modernization,
-UX/backend/AI analysis, testing, DevOps, documentation, quality control, and contribution
-preparation. In dry-run mode this is fully local and safe.
+Runs discovery, then for every selected repository executes acquisition, audit, modernization, UX/backend/AI analysis,
+testing, DevOps, documentation, quality control, and contribution preparation. In dry-run mode this is fully local and
+safe.
 
 ### `list`
 
@@ -44,10 +43,10 @@ Prints the repositories stored in project memory (`data/memory`).
 
 ## Flags
 
-| Flag | Effect |
-|------|--------|
+| Flag        | Effect                                |
+| ----------- | ------------------------------------- |
 | `--dry-run` | Force dry-run for the current command |
-| `--debug` | Enable debug-level logging |
+| `--debug`   | Enable debug-level logging            |
 
 ## Example session
 
@@ -64,16 +63,15 @@ npm run list
 
 ## Understanding the output
 
-- Logs are timestamped and prefixed with the agent responsible for the current phase, e.g.
-  `[security-engineer]`, `[principal-architect]`, `[code-review-maintainer]`.
+- Logs are timestamped and prefixed with the agent responsible for the current phase, e.g. `[security-engineer]`,
+  `[principal-architect]`, `[code-review-maintainer]`.
 - Phase results are recorded in project memory as `passed` / `failed`.
-- `ENTERPRISE_QUALITY_CERTIFICATE.md` in each workspace summarizes the before/after state and
-  the quality gates.
+- `ENTERPRISE_QUALITY_CERTIFICATE.md` in each workspace summarizes the before/after state and the quality gates.
 - `data/portfolio/PORTFOLIO.md` aggregates every processed repository.
 
 ## Exit codes
 
-| Code | Meaning |
-|------|---------|
-| `0` | Command completed |
-| `1` | A phase failed or an unrecoverable error occurred |
+| Code | Meaning                                           |
+| ---- | ------------------------------------------------- |
+| `0`  | Command completed                                 |
+| `1`  | A phase failed or an unrecoverable error occurred |

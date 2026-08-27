@@ -65,7 +65,14 @@ export class ProjectMemoryStore {
     writeFileSync(this.pathFor(memory.fullName), JSON.stringify(memory, null, 2));
   }
 
-  recordPhase(memory: ProjectMemory, phase: PhaseId, status: PhaseStatus, summary: string, artifacts: string[] = [], details?: unknown): void {
+  recordPhase(
+    memory: ProjectMemory,
+    phase: PhaseId,
+    status: PhaseStatus,
+    summary: string,
+    artifacts: string[] = [],
+    details?: unknown
+  ): void {
     const now = new Date().toISOString();
     memory.phases[phase] = {
       phase,

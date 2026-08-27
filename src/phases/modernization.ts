@@ -24,7 +24,10 @@ export class ModernizationEngine {
     if (!audit.missingLicense) {
       skipped.push("license already present");
     } else {
-      logger.warn("modernization", "no LICENSE file — not generating one automatically (license must be preserved from upstream)");
+      logger.warn(
+        "modernization",
+        "no LICENSE file — not generating one automatically (license must be preserved from upstream)"
+      );
       skipped.push("missing upstream license — requires human decision");
     }
 

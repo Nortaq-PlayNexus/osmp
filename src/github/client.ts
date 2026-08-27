@@ -35,10 +35,7 @@ export class GitHubClient {
     this.token = token;
   }
 
-  async request2<T = unknown>(
-    path: string,
-    opts: { method?: string; body?: unknown } = {}
-  ): Promise<T> {
+  async request2<T = unknown>(path: string, opts: { method?: string; body?: unknown } = {}): Promise<T> {
     const url = `${API}${path}`;
     const res = await fetch(url, {
       method: opts.method ?? "GET",
@@ -73,7 +70,10 @@ export class GitHubClient {
 
     if (res.status === 403) {
       const reset = res.headers.get("x-ratelimit-reset");
-      throw new RateLimitError(`rate limited (token: ${this.token ? "present" : "absent"})` + (reset ? ` resets ${new Date(+reset * 1000).toISOString()}` : ""));
+      throw new RateLimitError(
+        `rate limited (token: ${this.token ? "present" : "absent"})` +
+          (reset ? ` resets ${new Date(+reset * 1000).toISOString()}` : "")
+      );
     }
     if (res.status === 404) {
       const err = new Error(`GitHub 404 on ${url}`);

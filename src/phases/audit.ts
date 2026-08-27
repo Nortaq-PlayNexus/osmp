@@ -61,7 +61,11 @@ export class AuditEngine {
           totalFiles++;
           const ext = extname(e).replace(".", "") || "txt";
           languages[ext] = (languages[ext] ?? 0) + 1;
-          if (/^(package\.json|package-lock\.json|yarn\.lock|pnpm-lock\.yaml|Cargo\.lock|go\.sum|Pipfile|requirements\.txt|poetry\.lock|Gemfile\.lock)$/.test(e)) {
+          if (
+            /^(package\.json|package-lock\.json|yarn\.lock|pnpm-lock\.yaml|Cargo\.lock|go\.sum|Pipfile|requirements\.txt|poetry\.lock|Gemfile\.lock)$/.test(
+              e
+            )
+          ) {
             manifestFiles.push(join(dir, e));
           }
           if (st.size < 200_000 && /\.(js|ts|py|rb|go|java|env|yml|yaml|json|sh|php|cs)$/.test(e)) {
@@ -91,7 +95,8 @@ export class AuditEngine {
       hasLockfile: manifestFiles.some((f) => /lock/.test(f)),
       packageManagers,
       secretsFound: secretsFound.size,
-      missingLicense: !existsSync(join(ws, "LICENSE")) && !existsSync(join(ws, "LICENSE.md")) && !existsSync(join(ws, "LICENSE.txt")),
+      missingLicense:
+        !existsSync(join(ws, "LICENSE")) && !existsSync(join(ws, "LICENSE.md")) && !existsSync(join(ws, "LICENSE.txt")),
       security: {
         dependencyVulnerabilities: [],
         criticalSecrets: [...secretsFound],

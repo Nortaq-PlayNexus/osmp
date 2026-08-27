@@ -40,8 +40,7 @@ export interface ScoreInputs {
 export function scoreCandidate(inputs: ScoreInputs, weights: Weights = DEFAULT_WEIGHTS): RepoScore {
   const c = inputs.candidate;
 
-  const activityScore =
-    activityDimension(c, inputs.starGrowthRatio, inputs.issueVelocity).score;
+  const activityScore = activityDimension(c, inputs.starGrowthRatio, inputs.issueVelocity).score;
 
   const architecture = dim("Architecture Quality", architectureScore(c), [
     `primary language ${c.language ?? "unknown"}`,

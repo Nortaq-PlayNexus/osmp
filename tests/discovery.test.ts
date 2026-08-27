@@ -65,7 +65,11 @@ test("discovery rejects unlicensed, archived, and tutorial repos", async () => {
   const items = {
     "acme/unlicensed": { ...goodItem, full_name: "acme/unlicensed", license: null },
     "acme/dead": { ...goodItem, full_name: "acme/dead", archived: true },
-    "acme/tutorial": { ...goodItem, full_name: "acme/tutorial", description: "A tutorial on building things step by step" },
+    "acme/tutorial": {
+      ...goodItem,
+      full_name: "acme/tutorial",
+      description: "A tutorial on building things step by step",
+    },
   };
   const engine = new DiscoveryEngine(makeClient(items), {
     minStars: 50,

@@ -19,9 +19,12 @@ export function gitIn(dir: string, ...args: string[]): string {
     return execFileSync("git", args, { encoding: "utf8", cwd: dir, stdio: ["pipe", "pipe", "pipe"] }).trim();
   } catch (e) {
     const err = e as { stdout?: string; stderr?: string };
-    throw new Error(`git ${args.join(" ")} in ${dir} failed: ${(err.stderr ?? err.stdout ?? "").toString().slice(0, 800)}`, {
-      cause: e,
-    });
+    throw new Error(
+      `git ${args.join(" ")} in ${dir} failed: ${(err.stderr ?? err.stdout ?? "").toString().slice(0, 800)}`,
+      {
+        cause: e,
+      }
+    );
   }
 }
 

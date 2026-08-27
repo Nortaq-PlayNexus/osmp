@@ -5,13 +5,7 @@ import { AcquisitionPhase } from "../phases/acquisition.ts";
 import { AuditEngine } from "../phases/audit.ts";
 import type { AuditReport } from "../phases/audit.ts";
 import { ModernizationEngine } from "../phases/modernization.ts";
-import {
-  UxEngine,
-  BackendEngine,
-  AiFeatureAnalyzer,
-  TestingEngine,
-  DevopsEngine,
-} from "../phases/transformation.ts";
+import { UxEngine, BackendEngine, AiFeatureAnalyzer, TestingEngine, DevopsEngine } from "../phases/transformation.ts";
 import {
   DocumentationEngine,
   QualityControlEngine,
@@ -64,7 +58,10 @@ export class Orchestrator {
 
     const report: PipelineReport = {
       discovered: result.scored.length,
-      selected: result.selected.map((s) => ({ fullName: s.candidate.fullName, ospi: s.score.openSourcePotentialIndex })),
+      selected: result.selected.map((s) => ({
+        fullName: s.candidate.fullName,
+        ospi: s.score.openSourcePotentialIndex,
+      })),
       processed: [],
     };
 
@@ -83,7 +80,10 @@ export class Orchestrator {
     return report;
   }
 
-  async processOne(candidate: RepoCandidate, score: RepoScore): Promise<{ fullName: string; passed: boolean; certificatePath?: string }> {
+  async processOne(
+    candidate: RepoCandidate,
+    score: RepoScore
+  ): Promise<{ fullName: string; passed: boolean; certificatePath?: string }> {
     const mem = this.memory.loadOrCreate(candidate.fullName, candidate.url);
     mem.scores = { ...mem.scores, ospi: score.openSourcePotentialIndex };
     this.memory.save(mem);
@@ -168,7 +168,11 @@ export class Orchestrator {
     const engine = new AuditEngine();
     const report = await engine.audit(mem.workspacePath!);
     mem.audit = report as unknown as Record<string, unknown>;
-    this.memory.recordDecision(mem, `audit complete for ${candidate.fullName}`, `found ${report.totalFiles} files, ${report.secretsFound} secrets, package managers: ${report.packageManagers.join(",") || "none"}`);
+    this.memory.recordDecision(
+      mem,
+      `audit complete for ${candidate.fullName}`,
+      `found ${report.totalFiles} files, ${report.secretsFound} secrets, package managers: ${report.packageManagers.join(",") || "none"}`
+    );
   }
 
   private async runModernization(mem: ProjectMemory): Promise<void> {
@@ -178,7 +182,13 @@ export class Orchestrator {
 
   private async runQuality(mem: ProjectMemory, candidate: RepoCandidate, score: RepoScore): Promise<void> {
     const engine = new QualityControlEngine();
-    const qc = engine.run(mem.workspacePath!, candidate, score, mem.audit as unknown as AuditReport, this.config.dryRun);
+    const qc = engine.run(
+      mem.workspacePath!,
+      candidate,
+      score,
+      mem.audit as unknown as AuditReport,
+      this.config.dryRun
+    );
     const certPath = join(mem.workspacePath!, "ENTERPRISE_QUALITY_CERTIFICATE.md");
     writeFileSync(certPath, qc.certificate);
     if (!qc.passed) {
@@ -190,7 +200,11 @@ export class Orchestrator {
     const engine = new ContributionEngine();
     const res = await engine.run(mem, mem.workspacePath!, this.config.githubToken);
     if (res.pushed) {
-      this.memory.recordDecision(mem, "pushed feature/enterprise-modernization", `commits prepared: ${res.commits.length}`);
+      this.memory.recordDecision(
+        mem,
+        "pushed feature/enterprise-modernization",
+        `commits prepared: ${res.commits.length}`
+      );
     }
   }
 

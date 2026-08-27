@@ -27,8 +27,8 @@ npm run verify          # typecheck + lint + test
 
 ## Language constraints
 
-OSMP runs on **native Node TypeScript support** (type-stripping). This forbids syntax that
-requires transformation. Concretely:
+OSMP runs on **native Node TypeScript support** (type-stripping). This forbids syntax that requires transformation.
+Concretely:
 
 - ❌ Constructor parameter properties: `constructor(private x: T)`
 - ❌ `enum` / `namespace`
@@ -87,5 +87,4 @@ node --test tests/scoring.test.ts
 
 - Conventional Commits (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - A `pre-commit` Husky hook runs `lint-staged` (Prettier + ESLint) automatically.
-- Keep changes additive and upstream-friendly — the same ethics OSMP applies to other projects
-  apply here.
+- Keep changes additive and upstream-friendly — the same ethics OSMP applies to other projects apply here.

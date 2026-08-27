@@ -63,9 +63,15 @@ test("abandoned project does not qualify", () => {
 test("all dimensions are clamped to 0..100", () => {
   const score = scoreCandidate(inputs(makeCandidate()));
   const dims = [
-    score.architecture, score.maintainability, score.innovation,
-    score.marketPotential, score.communityOpportunity, score.technicalDebt,
-    score.enterpriseReadiness, score.modernizationPotential, score.activity,
+    score.architecture,
+    score.maintainability,
+    score.innovation,
+    score.marketPotential,
+    score.communityOpportunity,
+    score.technicalDebt,
+    score.enterpriseReadiness,
+    score.modernizationPotential,
+    score.activity,
   ];
   for (const d of dims) {
     assert.ok(d.score >= 0 && d.score <= 100, `${d.label} out of range: ${d.score}`);

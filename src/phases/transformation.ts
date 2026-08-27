@@ -25,7 +25,9 @@ export class UxEngine {
     const applied: string[] = [];
     const notes: string[] = [];
 
-    const hasWebFrontend = Object.keys(audit.languages).some((e) => ["jsx", "tsx", "vue", "svelte", "html", "css"].includes(e));
+    const hasWebFrontend = Object.keys(audit.languages).some((e) =>
+      ["jsx", "tsx", "vue", "svelte", "html", "css"].includes(e)
+    );
     if (hasWebFrontend) {
       write(ws, "docs/ux/design-guidelines.md", UX_DESIGN_DOC, applied, true);
       write(ws, "docs/ux/accessibility.md", A11Y_DOC, applied, true);

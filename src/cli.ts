@@ -79,7 +79,10 @@ async function main() {
   }
 }
 
-function printDiscovery(result: { selected: Array<{ candidate: any; score: any }>; rejected: Array<{ candidate: any; reasons: string[] }> }) {
+function printDiscovery(result: {
+  selected: Array<{ candidate: any; score: any }>;
+  rejected: Array<{ candidate: any; reasons: string[] }>;
+}) {
   console.log("\n=== DISCOVERY RESULTS ===");
   console.log(`Qualified candidates: ${result.selected.length}`);
   for (const s of result.selected) {

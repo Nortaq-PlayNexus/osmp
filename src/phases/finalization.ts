@@ -38,14 +38,23 @@ export class DocumentationEngine {
 
 // PHASE 11 — QUALITY CONTROL + ENTERPRISE QUALITY CERTIFICATE
 export class QualityControlEngine {
-  run(ws: string, candidate: RepoCandidate, before: RepoScore, audit: AuditReport, dryRun = false): { passed: boolean; certificate: string } {
+  run(
+    ws: string,
+    candidate: RepoCandidate,
+    before: RepoScore,
+    audit: AuditReport,
+    dryRun = false
+  ): { passed: boolean; certificate: string } {
     logger.info("quality", `running enterprise quality control on ${candidate.fullName}`);
 
     const gates: Array<{ name: string; ok: boolean; deferred?: boolean }> = [
       { name: "Build config present", ok: existsSync(join(ws, "package.json")) || existsSync(join(ws, ".github")) },
       { name: "CI pipeline present", ok: existsSync(join(ws, ".github/workflows")) },
       { name: "Documentation complete", ok: existsSync(join(ws, "README.md")) && existsSync(join(ws, "docs")) },
-      { name: "Deployment templates present", ok: existsSync(join(ws, "Dockerfile")) || existsSync(join(ws, "docker-compose.yml")) },
+      {
+        name: "Deployment templates present",
+        ok: existsSync(join(ws, "Dockerfile")) || existsSync(join(ws, "docker-compose.yml")),
+      },
       { name: "No critical secrets committed", ok: audit.secretsFound === 0 },
       { name: "License preserved", ok: !audit.missingLicense || dryRun, deferred: dryRun && audit.missingLicense },
     ];
@@ -59,7 +68,12 @@ export class QualityControlEngine {
     return { passed, certificate };
   }
 
-  private certificate(candidate: RepoCandidate, before: RepoScore, after: number, gates: Array<{ name: string; ok: boolean; deferred?: boolean }>): string {
+  private certificate(
+    candidate: RepoCandidate,
+    before: RepoScore,
+    after: number,
+    gates: Array<{ name: string; ok: boolean; deferred?: boolean }>
+  ): string {
     return [
       "# ENTERPRISE QUALITY CERTIFICATE",
       "",
@@ -78,7 +92,9 @@ export class QualityControlEngine {
       "",
       "## Quality Gates",
       "",
-      ...gates.map((g) => `- [${g.ok ? "x" : " "}] ${g.name}${g.deferred ? " (deferred — verified on real clone)" : ""}`),
+      ...gates.map(
+        (g) => `- [${g.ok ? "x" : " "}] ${g.name}${g.deferred ? " (deferred — verified on real clone)" : ""}`
+      ),
       "",
       `**Result: ${gates.every((g) => g.ok || g.deferred) ? "PASS — enterprise ready" : "CONDITIONAL — review failed gates"}`,
       "",
@@ -88,7 +104,11 @@ export class QualityControlEngine {
 
 // PHASE 12 — PROFESSIONAL OPEN SOURCE CONTRIBUTION (PR)
 export class ContributionEngine {
-  async run(memory: ProjectMemory, ws: string, token: string): Promise<{ pushed: boolean; prUrl?: string; commits: string[] }> {
+  async run(
+    memory: ProjectMemory,
+    ws: string,
+    token: string
+  ): Promise<{ pushed: boolean; prUrl?: string; commits: string[] }> {
     logger.info("contribution", `preparing professional contribution for ${memory.fullName}`);
     const commits = [
       "feat: add enterprise hardening and production readiness",
@@ -115,7 +135,11 @@ export class ContributionEngine {
       } catch {
         logger.info("contribution", "nothing to commit (already clean)");
       }
-      const remote = memory.forkUrl ? memory.forkUrl.replace("https://github.com/", "https://x-access-token:${TOKEN}@github.com/").replace("${TOKEN}", token) : "";
+      const remote = memory.forkUrl
+        ? memory.forkUrl
+            .replace("https://github.com/", "https://x-access-token:${TOKEN}@github.com/")
+            .replace("${TOKEN}", token)
+        : "";
       gitIn(ws, "checkout", "feature/enterprise-modernization");
       if (remote) {
         gitIn(ws, "remote", "add", "origin-osmp", remote);
@@ -141,7 +165,14 @@ export class CommunityEngine {
 
 // PHASE 14 — MODERNIZATION PORTFOLIO GENERATOR
 export class PortfolioEngine {
-  async generate(projects: Array<{ memory: ProjectMemory; before: RepoScore; after: number; stats?: { files: number; added: number; removed: number } }>): Promise<string> {
+  async generate(
+    projects: Array<{
+      memory: ProjectMemory;
+      before: RepoScore;
+      after: number;
+      stats?: { files: number; added: number; removed: number };
+    }>
+  ): Promise<string> {
     logger.info("portfolio", "generating enterprise portfolio report");
     const lines = ["# Open Source Modernization Portfolio", ""];
 
@@ -176,7 +207,8 @@ function readme(name: string, candidate: RepoCandidate, score: RepoScore): strin
   return [
     `# ${name}`,
     "",
-    candidate.description || `Professional-grade ${candidate.language ?? "open source"} project, modernized for enterprise readiness.`,
+    candidate.description ||
+      `Professional-grade ${candidate.language ?? "open source"} project, modernized for enterprise readiness.`,
     "",
     "## Highlights",
     "",
