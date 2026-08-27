@@ -41,6 +41,18 @@ repositories, understands them like a senior team would, modernizes them with di
 returns the improvements through professional upstream pull requests — always preserving the
 original author's vision, license, and identity.
 
+## Technology
+
+| Component | Stack |
+|-----------|-------|
+| Runtime | Node.js ≥ 22.6 (native TypeScript) |
+| Language | TypeScript (strict, no transpile step) |
+| Testing | `node:test` + `node:assert` |
+| Linting | ESLint |
+| Formatting | Prettier |
+| CI | GitHub Actions |
+| Dependencies | Zero runtime dependencies |
+
 ## Features
 
 - **14-phase autonomous pipeline** — from global discovery to upstream contribution, driven by
