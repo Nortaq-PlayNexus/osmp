@@ -14,8 +14,12 @@ updates:
         patterns:
           - "eslint*"
           - "prettier*"
-          - "typescript*"
           - "@types/*"
+        exclude-patterns:
+          - "typescript"
+      typescript:
+        patterns:
+          - "typescript"
   - package-ecosystem: github-actions
     directory: /
     schedule:
