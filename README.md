@@ -1,36 +1,31 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="OSMP banner" width="800">
+  <img src="https://img.shields.io/badge/OSMP-MODERNIZATION%20PLATFORM-00E5FF?style=flat-square&labelColor=0a0e1a" alt="osmp" />
 </p>
 
-<h1 align="center">OSMP — Open Source Modernization Platform</h1>
+# OSMP :: OPEN SOURCE MODERNIZATION PLATFORM
 
-<p align="center">
-  <em>An autonomous engineering organization that discovers overlooked open-source projects,
-  modernizes them to enterprise standards, and gives the improvements back to the community.</em>
-</p>
+**An autonomous engineering organization that discovers overlooked open-source projects, modernizes them to enterprise standards, and gives the improvements back to the community.**
 
 <p align="center">
-  <a href="https://github.com/Nortaq-PlayNexus/osmp/actions"><img src="https://img.shields.io/github/actions/workflow/status/Nortaq-PlayNexus/osmp/ci.yml?branch=main&style=flat-square&logo=githubactions&label=CI" alt="CI"></a>
-  <a href="https://www.npmjs.com/package/osmp"><img src="https://img.shields.io/npm/v/osmp?style=flat-square" alt="npm"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/Nortaq-PlayNexus/osmp?style=flat-square" alt="License"></a>
-  <a href="https://nodejs.org"><img src="https://img.shields.io/node/v/osmp?style=flat-square" alt="Node"></a>
-  <img src="https://img.shields.io/badge/zero-runtime-dependencies-blueviolet?style=flat-square" alt="Zero runtime dependencies">
-  <a href="https://conventionalcommits.org"><img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square" alt="Conventional Commits"></a>
+  <img src="https://img.shields.io/badge/STACK-TYPESCRIPT-B8FF1E?style=flat-square&logo=typescript&logoColor=white&labelColor=0a0e1a" alt="typescript"/>
+  <img src="https://img.shields.io/badge/NODE-18%2B-3dd5ff?style=flat-square&logo=node.js&logoColor=3dd5ff&labelColor=0a0e1a" alt="node"/>
+  <img src="https://img.shields.io/badge/DEPS-ZERO%20RUNTIME-00E5FF?style=flat-square&labelColor=0a0e1a" alt="deps"/>
+  <img src="https://img.shields.io/badge/PIPELINE-14%20PHASE-B8FF1E?style=flat-square&labelColor=0a0e1a" alt="pipeline"/>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/LICENSE-MIT-ff3b3b?style=flat-square&labelColor=0a0e1a" alt="license"/></a>
 </p>
 
-<p align="center">
-  <a href="#features">Features</a> ·
-  <a href="#screenshots">Screenshots</a> ·
-  <a href="#getting-started">Getting Started</a> ·
-  <a href="#the-14-phase-pipeline">Pipeline</a> ·
-  <a href="docs/architecture.md">Architecture</a> ·
-  <a href="docs/roadmap.md">Roadmap</a> ·
-  <a href="#contributing">Contributing</a>
-</p>
+<pre>
+IDENT ......... OSMP-01
+CLASS ......... AUTONOMOUS MODERNIZATION ORG
+STATUS ........ ONLINE / ACTIVE
+MODE .......... DISCOVER → MODERNIZE → GIVE BACK
+STACK ......... TYPESCRIPT · NODE · ZERO RUNTIME DEPS
+LINK .......... /osmp
+</pre>
 
 ---
 
-## Why OSMP?
+## // 01 :: WHY OSMP?
 
 Most open-source software is genuinely useful yet chronically underappreciated: small teams,
 unmaintained dependency chains, no CI, sparse documentation. These projects deserve better than
